@@ -32,7 +32,9 @@ object Collector {
         questions.addAll(files(folder))
         other.addProperty("name", "other")
         other.add("questions", questions)
-        topics.add(other)
+        if (questions.size() != 0) {
+            topics.add(other)
+        }
 
         subject.addProperty("name", name)
         subject.add("topics", topics)
@@ -75,6 +77,7 @@ object Collector {
         val result = JsonArray()
         folder.listFiles()
                 .filter { it.isDirectory }
+                .filter { it.name != ".git" }
                 .map(map)
                 .forEach { result.add(it) }
         return result
