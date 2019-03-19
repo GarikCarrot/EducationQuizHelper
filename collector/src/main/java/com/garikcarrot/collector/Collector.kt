@@ -5,6 +5,7 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import java.io.*
+import java.net.URLEncoder
 
 
 object Collector {
@@ -60,8 +61,8 @@ object Collector {
                 val question = JsonObject()
                 val answer = JsonArray()
                 var a = input.readLine()
-                while (a != null && a.isNotEmpty()) {
-                    answer.add(a)
+                while (a != null && a.trim().isNotEmpty()) {
+                    answer.add(URLEncoder.encode(a, "UTF-8"))
                     a = input.readLine()
                 }
                 question.addProperty("question", q)

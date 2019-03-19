@@ -2,6 +2,7 @@ package com.garikcarrot.education
 
 import com.garikcarrot.education.models.Question
 import com.google.firebase.database.*
+import java.net.URLDecoder
 
 object FirebaseRequests {
     private const val NAME = "name"
@@ -68,7 +69,9 @@ object FirebaseRequests {
     private fun createQuestion(snapshot: DataSnapshot): Question {
         return Question(
                 question = snapshot.child(QUESTION).value.toString(),
-                answer = snapshot.child(ANSWER).children.map { it.value.toString() }
+                answer = snapshot.child(ANSWER).children.map {
+                    URLDecoder.decode(it.value.toString(), "UTF-8").replace("\\", "\\\\", false);
+                }
         )
     }
 }
