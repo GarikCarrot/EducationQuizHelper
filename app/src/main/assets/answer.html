@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<title>MathJax TeX Test Page</title>
+		<script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}}); </script>
+		<!-- local -->
+		<script type="text/javascript" async src="mathjax/MathJax.js?config=TeX-AMS_CHTML"> </script>
+		<!-- android -->
+		<script type="text/javascript" async src="file:///android_asset/mathjax/MathJax.js?config=TeX-AMS_CHTML"> </script>
+		<script type="text/javascript">
+			
+			function updateText(texts) {
+			    var result = "";
+			    for (var i = 0; i < texts.length; i++) {
+			        result += texts[i] + "<br>";
+			    }
+			    document.getElementsByTagName('body')[0].innerHTML = result;
+			    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+			}
+		</script>
+		</head>
+	<body>
+		Loading...
+	</body>
+</html>

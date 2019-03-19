@@ -10,7 +10,7 @@ import java.io.*
 object Collector {
     @JvmStatic
     fun main(args: Array<String>) {
-        val root = File(args[0])
+        val root = File("/home/garik-carrot/IdeaProjects/EducationQuizHelper/questions")
         val result = JsonArray()
         result.addAll(dirs(root) { collectSubject(it) })
         FileWriter(File(root, "questions.json")).use({ writer ->
